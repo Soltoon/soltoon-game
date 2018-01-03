@@ -13,7 +13,6 @@ public class HelloWorldSoltoon extends Soltoon {
 
     @Override
     public void init(Game gameBoard) {
-//        fighters = (int) ((0.05 + Math.random() * 0.1) * gameBoard.getMapWidth() * gameBoard.getMapHeight());
     }
 
     @Override

@@ -52,6 +52,8 @@ public class ManagerGame extends Game {
         // remove khadang from from soltoon's khadangs
         ((ManagerGameSoltoon) gameKhadang.getOwner()).removeKhadang(gameKhadang);
 
+        khadangSoltoons.remove(khadang.getId());
+
         // add khadang to recently killed khadangs
         recentlyKilledKhadangs.add(gameKhadang);
     }
@@ -69,6 +71,7 @@ public class ManagerGame extends Game {
         khadangs.put(khadang.getId(), khadang);
         ((ManagerGameSoltoon) khadang.getOwner()).addKhadang(khadang);
         engineCell.assignKhadang(khadang);
+        khadangSoltoons.put(khadang.getId(), khadang.getOwner().getId());
     }
 
     public void addSoltoon(ManagerGameSoltoon soltoon) {

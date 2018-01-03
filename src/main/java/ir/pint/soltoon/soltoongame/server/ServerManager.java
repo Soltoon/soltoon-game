@@ -193,8 +193,12 @@ public abstract class ServerManager {
             }
             sendResult(result, command, queryAction, soltoon.getId());
 
-            if (!skipPlayer)
-                soltoonsToQuery.add(soltoon);
+            if (!skipPlayer) {
+                if (((ManagerGameSoltoon) soltoon).isMaster())
+                    soltoonsToQuery.addFirst(soltoon);
+                else
+                    soltoonsToQuery.add(soltoon);
+            }
         }
     }
 
