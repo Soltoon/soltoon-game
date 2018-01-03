@@ -82,6 +82,10 @@ public final class AddKhadang extends Action {
         return khadang;
     }
 
+    public KhadangType getType() {
+        return type;
+    }
+
     public int getX() {
         return x;
     }

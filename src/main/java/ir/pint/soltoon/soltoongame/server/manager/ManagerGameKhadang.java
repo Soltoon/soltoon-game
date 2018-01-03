@@ -13,7 +13,7 @@ public class ManagerGameKhadang extends GameKhadang {
     }
 
     public void resetRestingTime() {
-        remainingReloadingTime = type.getRestingTime();
+        remainingRestingTime = type.getRestingTime();
     }
 
     public void resetReloadingTime() {

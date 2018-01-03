@@ -31,6 +31,11 @@ public abstract class ServerManager {
     protected int rounds;
     protected int width, height;
     protected int players;
+    protected int localPlayers = 0;
+
+    protected Integer playersInitialScore = GameConfiguration.PLAYERS_INITIAL_SCORE;
+    protected Integer playersInitialMoney = GameConfiguration.PLAYERS_INITIAL_MONEY;
+    protected Integer playersMoneyPerRound = GameConfiguration.PLAYERS_TURN_MONERY;
 
     protected ManagerGame gameBoard;
     protected ServerComminucation server;
@@ -43,7 +48,7 @@ public abstract class ServerManager {
 
         Set<Long> clientIds = server.getClients().keySet();
 
-        if (clientIds.size() != this.players) {
+        if (clientIds.size() != this.players - this.localPlayers) {
             System.err.printf("You must have at least %d connected clients.\n" +
                     "* Check your configurations.\n", this.players);
             Platform.exit(Platform.PLAYERS_COUNT_ERROR);
@@ -64,7 +69,7 @@ public abstract class ServerManager {
     }
 
     protected ManagerGameSoltoon initializeClient(Long client) {
-        return initializeClient(client, GameConfiguration.PLAYERS_INITIAL_SCORE, GameConfiguration.PLAYERS_TURN_MONERY, GameConfiguration.PLAYERS_INITIAL_MONEY);
+        return initializeClient(client, playersInitialScore, playersMoneyPerRound, playersInitialMoney);
     }
 
     protected ManagerGameSoltoon initializeClient(Long client, Integer initialScore, Integer turnMoney, Integer initialMoney) {
@@ -102,7 +107,7 @@ public abstract class ServerManager {
 
     protected void addLocalClientManager(Long client, LocalClientManager localClientManager) {
         localClients.put(client, localClientManager);
-        PlayerJoin playerJoin = new PlayerJoin(client, new ComRemoteInfo("local", 0, ""));
+        PlayerJoin playerJoin = new PlayerJoin(client, new ComRemoteInfo("server", "SERVER", "localhost", 0, ""));
         ResultStorage.addEvent(playerJoin);
     }
 
@@ -156,8 +161,9 @@ public abstract class ServerManager {
             GameSoltoon soltoon = soltoonsToQuery.pop();
 
             ManagerGameSoltoon engineGameSoltoon = (ManagerGameSoltoon) soltoon;
-            if (!agentFilter.isQueryAllowed(engineGameSoltoon))
+            if (!agentFilter.isQueryAllowed(engineGameSoltoon)) {
                 continue;
+            }
 
             boolean skipPlayer = false;
             QueryAction queryAction = new QueryAction(soltoon.getId(), gameBoard);

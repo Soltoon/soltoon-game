@@ -138,11 +138,11 @@ public enum KhadangType {
     }
 
     public Integer getDeathPenalty() {
-        return getCost() / 4;
+        return getCost() / 2;
     }
 
     public Integer getCreatePoint() {
-        return getCost() / 2;
+        return getCost() / 4;
     }
 
     public static KhadangType getRandomType() {

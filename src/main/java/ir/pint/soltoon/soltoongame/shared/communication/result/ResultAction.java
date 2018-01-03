@@ -11,4 +11,12 @@ public class ResultAction extends Result {
     public ResultAction(Long id, Status status) {
         this(id, status, null);
     }
+
+    @Override
+    public String toString() {
+        return "ResultAction{" +
+                "data=" + data +
+                ", status=" + status +
+                '}';
+    }
 }

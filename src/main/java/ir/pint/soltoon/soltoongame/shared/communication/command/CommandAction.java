@@ -2,12 +2,13 @@ package ir.pint.soltoon.soltoongame.shared.communication.command;
 
 import ir.pint.soltoon.soltoongame.shared.actions.Action;
 
-public class CommandAction extends Command{
+public class CommandAction extends Command {
 
     private Action action;
+
     public CommandAction(Long id, Action action) {
         super(id);
-        this.action=action;
+        this.action = action;
     }
 
     public Action getAction() {
@@ -16,5 +17,12 @@ public class CommandAction extends Command{
 
     public void setAction(Action action) {
         this.action = action;
+    }
+
+    @Override
+    public String toString() {
+        return "CommandAction{" +
+                "action=" + action +
+                '}';
     }
 }

@@ -7,14 +7,15 @@ import ir.pint.soltoon.utils.shared.facades.result.ResultStorage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class SuiManager {
-    private Map<Long, SuiPlayer> players = new Hashtable<>();
-    private Map<Long, SuiFighter> fighters = new Hashtable<>();
+    private Map<Long, SuiPlayer> players = Collections.synchronizedMap(new Hashtable<>());
+    private Map<Long, SuiFighter> fighters = Collections.synchronizedMap(new Hashtable<>());
     private SuiConfiguration suiConfiguration;
 
     private SuiActionDrawer actionDrawer;
@@ -124,7 +125,7 @@ public class SuiManager {
         if (!currentStep.sleep()) {
             if (hasNextStep())
                 nextStep();
-        }else {
+        } else {
             repaintAll();
         }
     }

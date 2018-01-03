@@ -3,6 +3,9 @@ package ir.pint.soltoon.soltoongame.server;
 import ir.pint.soltoon.soltoongame.server.scenarios.freeWorld.FreeWorldServerManager;
 import ir.pint.soltoon.soltoongame.server.scenarios.helloWorld.HelloWorldServerManager;
 import ir.pint.soltoon.soltoongame.server.scenarios.name.NameServerManager;
+import ir.pint.soltoon.soltoongame.server.scenarios.warrior.SoltoonWarriorByATofighi;
+import ir.pint.soltoon.soltoongame.server.scenarios.warrior.SoltoonWarriorByAmirkasra;
+import ir.pint.soltoon.soltoongame.server.scenarios.warrior.WarriorServerManager;
 import ir.pint.soltoon.soltoongame.server.sync.JavadTypeResultHandler;
 import ir.pint.soltoon.soltoongame.shared.GameConfiguration;
 import ir.pint.soltoon.soltoongame.shared.Platform;
@@ -91,6 +94,46 @@ public class ServerRunner {
 
         // start judge
         ServerManager serverManager = new NameServerManager(server, width, height);
+        serverManager.run();
+
+        Platform.exit(Platform.OK);
+    }
+
+    public static void runWarrior() {
+        runWarrior(GameConfiguration.DEFAULT_REMOTE_INFO);
+    }
+
+    public static void runWarrior(ComRemoteInfo remoteInfo) {
+        // rebound communication between filters and clients.
+        ComServer comServer = ComServer.initiate(remoteInfo);
+
+        GUIRunner.openGUI();
+
+        // CREATE comminucation wrapper
+        ServerComminucation server = new ServerComminucation(comServer);
+
+        // start judge
+        ServerManager serverManager = new WarriorServerManager(server, SoltoonWarriorByAmirkasra.class);
+        serverManager.run();
+
+        Platform.exit(Platform.OK);
+    }
+
+    public static void runWarrior2() {
+        runWarrior2(GameConfiguration.DEFAULT_REMOTE_INFO);
+    }
+
+    public static void runWarrior2(ComRemoteInfo remoteInfo) {
+        // rebound communication between filters and clients.
+        ComServer comServer = ComServer.initiate(remoteInfo);
+
+        GUIRunner.openGUI();
+
+        // CREATE comminucation wrapper
+        ServerComminucation server = new ServerComminucation(comServer);
+
+        // start judge
+        ServerManager serverManager = new WarriorServerManager(server, SoltoonWarriorByATofighi.class);
         serverManager.run();
 
         Platform.exit(Platform.OK);

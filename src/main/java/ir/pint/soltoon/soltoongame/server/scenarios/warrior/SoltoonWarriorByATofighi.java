@@ -1,4 +1,4 @@
-package ir.pint.soltoon.soltoongame.client.implementations;
+package ir.pint.soltoon.soltoongame.server.scenarios.warrior;
 
 import ir.pint.soltoon.soltoongame.shared.actions.Action;
 import ir.pint.soltoon.soltoongame.shared.actions.AddKhadang;
@@ -9,7 +9,7 @@ import ir.pint.soltoon.soltoongame.shared.map.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoltoonMajarajoo extends Soltoon {
+public class SoltoonWarriorByATofighi extends Soltoon {
 
     @Override
     public void init(Game game) {
