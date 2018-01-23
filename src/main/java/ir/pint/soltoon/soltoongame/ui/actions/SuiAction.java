@@ -1,7 +1,5 @@
 package ir.pint.soltoon.soltoongame.ui.actions;
 
-import ir.pint.soltoon.soltoongame.ui.SuiManager;
-
 public abstract class SuiAction implements SuiStep {
     protected int x, y;
     protected Long player;

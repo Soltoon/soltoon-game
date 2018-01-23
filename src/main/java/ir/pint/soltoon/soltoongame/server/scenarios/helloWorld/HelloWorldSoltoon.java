@@ -1,9 +1,9 @@
 package ir.pint.soltoon.soltoongame.server.scenarios.helloWorld;
 
+import ir.pint.soltoon.soltoongame.shared.actions.Action;
 import ir.pint.soltoon.soltoongame.shared.actions.AddKhadang;
 import ir.pint.soltoon.soltoongame.shared.agents.Khadang;
 import ir.pint.soltoon.soltoongame.shared.agents.Soltoon;
-import ir.pint.soltoon.soltoongame.shared.actions.Action;
 import ir.pint.soltoon.soltoongame.shared.map.Game;
 import ir.pint.soltoon.soltoongame.shared.map.KhadangType;
 

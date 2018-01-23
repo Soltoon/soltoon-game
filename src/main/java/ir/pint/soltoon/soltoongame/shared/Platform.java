@@ -3,8 +3,6 @@ package ir.pint.soltoon.soltoongame.shared;
 import ir.pint.soltoon.utils.shared.facades.result.ResultStorage;
 
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Platform {
     public static final int CONNECTION_ERROR = 1;

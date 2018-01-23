@@ -1,6 +1,5 @@
 package ir.pint.soltoon.soltoongame.ui.actions;
 
-import ir.pint.soltoon.soltoongame.shared.GameConfiguration;
 import ir.pint.soltoon.soltoongame.ui.SuiManager;
 import ir.pint.soltoon.soltoongame.ui.elements.SuiPlayer;
 

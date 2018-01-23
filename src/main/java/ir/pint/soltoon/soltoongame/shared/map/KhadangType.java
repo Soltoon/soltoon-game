@@ -29,13 +29,13 @@ public enum KhadangType {
     public Integer getHealth() {
         switch (this) {
             case MUSKETEER:
-                return 100;
+                return 200;
             case CANNON:
-                return 2000;
+                return 4000;
             case GIANT:
-                return 500;
+                return 1000;
             case CASTLE:
-                return 10000;
+                return 20000;
         }
         return null;
     }
@@ -46,11 +46,11 @@ public enum KhadangType {
     public Integer getReloadingTime() {
         switch (this) {
             case CANNON:
-                return 2;
+                return 0;
             case GIANT:
-                return 4;
-            case CASTLE:
                 return 2;
+            case CASTLE:
+                return 1;
             case MUSKETEER:
                 return 0;
         }
@@ -65,11 +65,11 @@ public enum KhadangType {
             case CANNON:
                 return Integer.MAX_VALUE;
             case GIANT:
-                return 2;
+                return 1;
             case CASTLE:
                 return Integer.MAX_VALUE;
             case MUSKETEER:
-                return 1;
+                return 0;
         }
         return null;
     }
@@ -95,7 +95,7 @@ public enum KhadangType {
             case CANNON:
                 return 100;
             case GIANT:
-                return 300;
+                return 50;
             case CASTLE:
                 return 1000;
             case MUSKETEER:
@@ -114,11 +114,11 @@ public enum KhadangType {
             case MUSKETEER:
                 return 3;
             case CANNON:
-                return 5;
+                return 4;
             case GIANT:
                 return 1;
             case CASTLE:
-                return 7;
+                return 5;
         }
         return 0;
     }
@@ -126,13 +126,13 @@ public enum KhadangType {
     public Integer getShootingPower() {
         switch (this) {
             case CASTLE:
-                return 75;
+                return 200;
             case MUSKETEER:
-                return 20;
-            case CANNON:
                 return 50;
+            case CANNON:
+                return 100;
             case GIANT:
-                return 250;
+                return 500;
         }
         return 0;
     }
@@ -142,7 +142,7 @@ public enum KhadangType {
     }
 
     public Integer getCreatePoint() {
-        return getCost() / 4;
+        return getCost();
     }
 
     public static KhadangType getRandomType() {

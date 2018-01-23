@@ -2,14 +2,9 @@ package ir.pint.soltoon.soltoongame.ui.elements;
 
 import ir.pint.soltoon.soltoongame.ui.SuiConfiguration;
 import ir.pint.soltoon.soltoongame.ui.SuiManager;
-import ir.pint.soltoon.soltoongame.ui.actions.SuiAction;
-import ir.pint.soltoon.soltoongame.ui.actions.SuiActionAdd;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 
 public class SuiGameFrame extends JFrame {
 

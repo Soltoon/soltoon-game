@@ -1,13 +1,10 @@
 package ir.pint.soltoon.soltoongame.ui.elements;
 
-import ir.pint.soltoon.soltoongame.ui.SuiConfiguration;
 import ir.pint.soltoon.soltoongame.ui.SuiManager;
 import ir.pint.soltoon.soltoongame.ui.actions.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SuiActionDrawer extends JComponent {
     private SuiManager suiManager;

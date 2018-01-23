@@ -1,6 +1,5 @@
 package ir.pint.soltoon.soltoongame.shared.exceptions;
 
-import ir.pint.soltoon.utils.shared.comminucation.ComRemoteInfo;
 import ir.pint.soltoon.utils.shared.exceptions.SoltoonContainerException;
 
 public class ClientInitializationException extends SoltoonContainerException {

@@ -4,7 +4,11 @@ import ir.pint.soltoon.utils.shared.comminucation.ComRemoteConfig;
 import ir.pint.soltoon.utils.shared.comminucation.ComRemoteInfo;
 
 public class GameConfiguration {
-    public static final double FRIEND_COEEF = 0.25;
+    public static double FRIEND_COEEF = 0;
+    public static final Integer ATTACK_INITIAL_MONEY = 1500;
+    public static final Integer ATTACK_MONEY_PER_ROUND = 50;
+    public static Integer DEFENCE_INITIAL_MONEY = 1300;
+    public static Integer DEFENCE_MONEY_PER_ROUND = 0;
     public static double INITIAL_HP_COEFF = 1;
     public static int PLAYERS_INITIAL_SCORE = 0;
     public static double CONNECTION_COEFF = 1.3;
@@ -20,9 +24,9 @@ public class GameConfiguration {
     public static long EXIT_QUERY_TIME = 1000L;
 
     public static int NUMBER_OF_PLAYERS = 2;
-    public static int ROUNDS = 10;
+    public static int ROUNDS = 100;
     public static int BOARD_WIDTH = 20;
-    public static int BOARD_HEIGHT = 15;
+    public static int BOARD_HEIGHT = 20;
 
     public static int PLAYERS_INITIAL_MONEY = 100;
     public static int PLAYERS_TURN_MONERY = 50;

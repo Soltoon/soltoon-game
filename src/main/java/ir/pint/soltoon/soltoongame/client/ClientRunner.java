@@ -3,7 +3,9 @@ package ir.pint.soltoon.soltoongame.client;
 import ir.pint.soltoon.soltoongame.shared.GameConfiguration;
 import ir.pint.soltoon.soltoongame.shared.Platform;
 import ir.pint.soltoon.soltoongame.shared.agents.Soltoon;
-import ir.pint.soltoon.utils.shared.comminucation.*;
+import ir.pint.soltoon.utils.shared.comminucation.ComClient;
+import ir.pint.soltoon.utils.shared.comminucation.ComRemoteConfig;
+import ir.pint.soltoon.utils.shared.comminucation.Comminucation;
 
 public class ClientRunner {
     public static void runContainer(Class<? extends Soltoon> soltoonClass) {

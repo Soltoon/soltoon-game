@@ -1,5 +1,6 @@
 package ir.pint.soltoon.soltoongame.ui.elements;
 
+import ir.pint.soltoon.soltoongame.ui.Sui;
 import ir.pint.soltoon.soltoongame.ui.SuiConfiguration;
 import ir.pint.soltoon.soltoongame.ui.SuiManager;
 import ir.pint.soltoon.soltoongame.ui.analysis.AnalysisType;
@@ -33,12 +34,15 @@ public class SuiPanel extends JPanel {
         setMaximumSize(new Dimension(suiConfiguration.getPanelWidth(), suiConfiguration.getFrameHeight()));
 
         Box controlsBox = Box.createHorizontalBox();
+        Box controlsBox2 = Box.createHorizontalBox();
         controlsBox.add(new SuiPrevTurnButton());
         controlsBox.add(new SuiPauseStartButton());
         controlsBox.add(new SuiNextTurnButton());
+        controlsBox2.add(new SuiSpeedUpButton());
+        controlsBox2.add(new SuiSpeedDownButton());
+        controlsBox2.add(new SuiFinalSceneButton());
         controlsBox.setAlignmentY(JComponent.TOP_ALIGNMENT);
-
-        controlsBox.setSize(suiConfiguration.getPanelWidth(), controlsBox.getHeight());
+        controlsBox2.setAlignmentY(JComponent.TOP_ALIGNMENT);
 
         Box analysisBox = Box.createHorizontalBox();
         AnalysisComboBox analysisComboBox = new AnalysisComboBox();
@@ -59,9 +63,10 @@ public class SuiPanel extends JPanel {
         add(new Logo());
         add(Box.createRigidArea(new Dimension(0, 40)));
         add(controlsBox);
+        add(controlsBox2);
         add(Box.createRigidArea(new Dimension(0, 40)));
 
-        roundbox.setText("Round: (0/0)");
+        roundbox.setText(String.format("Round: (0/0)"));
 
         add(roundbox);
         add(Box.createRigidArea(new Dimension(0, 20)));
@@ -112,6 +117,51 @@ public class SuiPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
                     suiManager.prevStep();
+                }
+            });
+        }
+    }
+
+    private class SuiSpeedUpButton extends SuiTimeButton {
+        public SuiSpeedUpButton() {
+            super("Speed +");
+
+            setToolTipText("SpeedUp");
+
+            addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Sui.speed = Math.min(++Sui.speed, 10);
+                }
+            });
+        }
+    }
+
+    private class SuiFinalSceneButton extends SuiTimeButton {
+        public SuiFinalSceneButton() {
+            super("End");
+
+            setToolTipText("Final scene");
+
+            addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Sui.finalScene = true;
+                }
+            });
+        }
+    }
+
+    private class SuiSpeedDownButton extends SuiTimeButton {
+        public SuiSpeedDownButton() {
+            super("Speed -");
+
+            setToolTipText("Previous Turn");
+
+            addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Sui.speed = Math.max(--Sui.speed, 1);
                 }
             });
         }

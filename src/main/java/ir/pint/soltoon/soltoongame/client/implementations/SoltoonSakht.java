@@ -8,7 +8,6 @@ import ir.pint.soltoon.soltoongame.shared.agents.Khadang;
 import ir.pint.soltoon.soltoongame.shared.agents.Soltoon;
 import ir.pint.soltoon.soltoongame.shared.map.*;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 

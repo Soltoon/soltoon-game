@@ -3,7 +3,6 @@ package ir.pint.soltoon.soltoongame.server.manager;
 import ir.pint.soltoon.soltoongame.shared.map.Cell;
 import ir.pint.soltoon.soltoongame.shared.map.Game;
 import ir.pint.soltoon.soltoongame.shared.map.GameKhadang;
-import ir.pint.soltoon.soltoongame.shared.map.GameSoltoon;
 import ir.pint.soltoon.utils.shared.facades.json.SerializeAs;
 
 import java.util.ArrayList;

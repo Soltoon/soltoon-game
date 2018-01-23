@@ -1,10 +1,10 @@
 package ir.pint.soltoon.soltoongame.server;
 
 import ir.pint.soltoon.soltoongame.client.LocalClientManager;
+import ir.pint.soltoon.soltoongame.server.filters.AgentFilter;
 import ir.pint.soltoon.soltoongame.server.manager.ManagerGame;
 import ir.pint.soltoon.soltoongame.server.manager.ManagerGameKhadang;
 import ir.pint.soltoon.soltoongame.server.manager.ManagerGameSoltoon;
-import ir.pint.soltoon.soltoongame.server.filters.AgentFilter;
 import ir.pint.soltoon.soltoongame.shared.GameConfiguration;
 import ir.pint.soltoon.soltoongame.shared.Platform;
 import ir.pint.soltoon.soltoongame.shared.actions.*;
@@ -192,15 +192,12 @@ public abstract class ServerManager {
             }
 
             if (!commandSuccessful) {
-//                System.out.println(command);
-//                System.out.println(queryAction);
-//                System.out.println(gameBoard);
                 result = new ResultAction(soltoon.getId(), Status.FAILURE);
             }
             sendResult(result, command, queryAction, soltoon.getId());
 
             if (!skipPlayer) {
-                if (((ManagerGameSoltoon) soltoon).isMaster())
+                if (((ManagerGameSoltoon) soltoon).isMaster() || ((ManagerGameSoltoon) soltoon).isSingleStep())
                     soltoonsToQuery.addFirst(soltoon);
                 else
                     soltoonsToQuery.add(soltoon);
@@ -229,7 +226,15 @@ public abstract class ServerManager {
         if (agentFilter == null)
             agentFilter = AgentFilter.NULL_OBJECT;
 
-        Collection<GameKhadang> khadangsList = new ArrayList<GameKhadang>(gameBoard.getKhadangs().values());
+        ArrayList<GameKhadang> khadangsList = new ArrayList<GameKhadang>(gameBoard.getKhadangs().values());
+
+        khadangsList.sort(new Comparator<GameKhadang>() {
+            @Override
+            public int compare(GameKhadang gameKhadang, GameKhadang t1) {
+                return ((ManagerGameKhadang) gameKhadang).getOrder() - ((ManagerGameKhadang) t1).getOrder();
+            }
+        });
+
 
         ArrayList<GameKhadang> recentlyKilledKhadangs = gameBoard.getRecentlyKilledKhadangs();
         for (GameKhadang khadang : khadangsList) {

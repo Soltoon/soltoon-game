@@ -3,7 +3,8 @@ package ir.pint.soltoon.soltoongame.shared.map;
 
 import ir.pint.soltoon.utils.shared.facades.reflection.PrivateCall;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class holds all information about the game.

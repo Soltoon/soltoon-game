@@ -1,8 +1,8 @@
 package ir.pint.soltoon.soltoongame.shared.agents;
 
+import ir.pint.soltoon.soltoongame.shared.actions.Action;
 import ir.pint.soltoon.soltoongame.shared.communication.command.Command;
 import ir.pint.soltoon.soltoongame.shared.communication.result.Result;
-import ir.pint.soltoon.soltoongame.shared.actions.Action;
 import ir.pint.soltoon.soltoongame.shared.map.Game;
 import ir.pint.soltoon.utils.clients.proxy.ProxyReturnStorage;
 import ir.pint.soltoon.utils.clients.proxy.TimeAwareBean;

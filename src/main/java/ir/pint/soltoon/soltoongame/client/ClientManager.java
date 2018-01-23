@@ -1,15 +1,18 @@
 package ir.pint.soltoon.soltoongame.client;
 
 import ir.pint.soltoon.soltoongame.shared.Platform;
+import ir.pint.soltoon.soltoongame.shared.actions.AddKhadang;
+import ir.pint.soltoon.soltoongame.shared.agents.Agent;
 import ir.pint.soltoon.soltoongame.shared.agents.Khadang;
+import ir.pint.soltoon.soltoongame.shared.agents.Soltoon;
 import ir.pint.soltoon.soltoongame.shared.communication.command.*;
-import ir.pint.soltoon.soltoongame.shared.communication.query.*;
+import ir.pint.soltoon.soltoongame.shared.communication.query.Query;
+import ir.pint.soltoon.soltoongame.shared.communication.query.QueryAction;
+import ir.pint.soltoon.soltoongame.shared.communication.query.QueryFinalize;
+import ir.pint.soltoon.soltoongame.shared.communication.query.QueryInitialize;
 import ir.pint.soltoon.soltoongame.shared.communication.result.Result;
 import ir.pint.soltoon.soltoongame.shared.communication.result.ResultAddFighterAction;
 import ir.pint.soltoon.soltoongame.shared.communication.result.Status;
-import ir.pint.soltoon.soltoongame.shared.agents.Agent;
-import ir.pint.soltoon.soltoongame.shared.agents.Soltoon;
-import ir.pint.soltoon.soltoongame.shared.actions.AddKhadang;
 import ir.pint.soltoon.utils.shared.facades.result.ResultStorage;
 
 import java.util.HashMap;

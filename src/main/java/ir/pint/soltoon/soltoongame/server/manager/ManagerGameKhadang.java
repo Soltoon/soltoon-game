@@ -1,15 +1,19 @@
 package ir.pint.soltoon.soltoongame.server.manager;
 
 import ir.pint.soltoon.soltoongame.shared.map.Cell;
-import ir.pint.soltoon.soltoongame.shared.map.KhadangType;
 import ir.pint.soltoon.soltoongame.shared.map.Game;
 import ir.pint.soltoon.soltoongame.shared.map.GameKhadang;
+import ir.pint.soltoon.soltoongame.shared.map.KhadangType;
 import ir.pint.soltoon.utils.shared.facades.json.SerializeAs;
 
 @SerializeAs(GameKhadang.class)
 public class ManagerGameKhadang extends GameKhadang {
+    private static int QUERY_ORDER = 0;
+    private int order;
+
     public ManagerGameKhadang(Long id, Long ownerId, KhadangType fighterType) {
         super(id, ownerId, fighterType);
+        order = QUERY_ORDER++;
     }
 
     public void resetRestingTime() {
@@ -57,5 +61,9 @@ public class ManagerGameKhadang extends GameKhadang {
     @Override
     public void setGame(Game game) {
         super.setGame(game);
+    }
+
+    public int getOrder() {
+        return order;
     }
 }

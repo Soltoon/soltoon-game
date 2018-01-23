@@ -1,18 +1,18 @@
 package ir.pint.soltoon.soltoongame.server;
 
+import ir.pint.soltoon.soltoongame.server.scenarios.attack.AttackServerManager;
+import ir.pint.soltoon.soltoongame.server.scenarios.defence.DefenceServerManager;
 import ir.pint.soltoon.soltoongame.server.scenarios.freeWorld.FreeWorldServerManager;
 import ir.pint.soltoon.soltoongame.server.scenarios.helloWorld.HelloWorldServerManager;
 import ir.pint.soltoon.soltoongame.server.scenarios.name.NameServerManager;
 import ir.pint.soltoon.soltoongame.server.scenarios.warrior.SoltoonWarriorByATofighi;
 import ir.pint.soltoon.soltoongame.server.scenarios.warrior.SoltoonWarriorByAmirkasra;
 import ir.pint.soltoon.soltoongame.server.scenarios.warrior.WarriorServerManager;
-import ir.pint.soltoon.soltoongame.server.sync.JavadTypeResultHandler;
 import ir.pint.soltoon.soltoongame.shared.GameConfiguration;
 import ir.pint.soltoon.soltoongame.shared.Platform;
 import ir.pint.soltoon.soltoongame.ui.GUIRunner;
 import ir.pint.soltoon.utils.shared.comminucation.ComRemoteInfo;
 import ir.pint.soltoon.utils.shared.comminucation.ComServer;
-import ir.pint.soltoon.utils.shared.facades.result.ResultStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -134,6 +134,46 @@ public class ServerRunner {
 
         // start judge
         ServerManager serverManager = new WarriorServerManager(server, SoltoonWarriorByATofighi.class);
+        serverManager.run();
+
+        Platform.exit(Platform.OK);
+    }
+
+    public static void runDefence() {
+        runDefence(GameConfiguration.DEFAULT_REMOTE_INFO);
+    }
+
+    public static void runDefence(ComRemoteInfo remoteInfo) {
+        // rebound communication between filters and clients.
+        ComServer comServer = ComServer.initiate(remoteInfo);
+
+        GUIRunner.openGUI();
+
+        // CREATE comminucation wrapper
+        ServerComminucation server = new ServerComminucation(comServer);
+
+        // start judge
+        ServerManager serverManager = new DefenceServerManager(server);
+        serverManager.run();
+
+        Platform.exit(Platform.OK);
+    }
+
+    public static void runAttack() {
+        runAttack(GameConfiguration.DEFAULT_REMOTE_INFO);
+    }
+
+    public static void runAttack(ComRemoteInfo remoteInfo) {
+        // rebound communication between filters and clients.
+        ComServer comServer = ComServer.initiate(remoteInfo);
+
+        GUIRunner.openGUI();
+
+        // CREATE comminucation wrapper
+        ServerComminucation server = new ServerComminucation(comServer);
+
+        // start judge
+        ServerManager serverManager = new AttackServerManager(server);
         serverManager.run();
 
         Platform.exit(Platform.OK);

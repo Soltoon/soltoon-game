@@ -5,6 +5,9 @@ import ir.pint.soltoon.soltoongame.shared.Platform;
 public class Sui extends Thread {
     private boolean gameIsReady = false;
     private SuiManager suiManager;
+    public static long sleepTime = 1000;
+    public static int speed = 2;
+    public static boolean finalScene = false;
 
     private Sui(SuiManager suiManager) {
         this.suiManager = suiManager;
@@ -25,14 +28,15 @@ public class Sui extends Thread {
 
         while (true) {
             try {
-                Thread.sleep(100);
-                if (suiManager.getSuiConfiguration().isPlay() && !suiManager.getSuiConfiguration().isFinalSceneOnly() && skipper++ >= 5) {
+                Thread.sleep(Math.max(sleepTime / speed, 50));
+                if (suiManager.getSuiConfiguration().isPlay() && !suiManager.getSuiConfiguration().isFinalSceneOnly()) {
                     suiManager.nextStep();
-                    skipper = 0;
                 }
-                if (suiManager.getSuiConfiguration().isFinalSceneOnly() && suiManager.getSuiConfiguration().isEndEventRecieved()) {
+                if ((suiManager.getSuiConfiguration().isFinalSceneOnly() || finalScene) && suiManager.getSuiConfiguration().isEndEventRecieved()) {
                     while (suiManager.hasNextStep())
                         suiManager.nextStep();
+
+                    finalScene = false;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

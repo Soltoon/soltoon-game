@@ -12,6 +12,7 @@ public class ManagerGameSoltoon extends GameSoltoon implements Comparable<Manage
 
     protected Integer weight = 0;
     protected boolean master = false;
+    protected boolean singleStep = false;
 
 
     public ManagerGameSoltoon(Long id) {
@@ -97,5 +98,13 @@ public class ManagerGameSoltoon extends GameSoltoon implements Comparable<Manage
 
     public void setMaster(boolean master) {
         this.master = master;
+    }
+
+    public boolean isSingleStep() {
+        return singleStep;
+    }
+
+    public void setSingleStep(boolean singleStep) {
+        this.singleStep = singleStep;
     }
 }
